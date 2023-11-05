@@ -39,39 +39,39 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 
 def input_converter(inp):
-    vcl = ['Two-seater', 'Minicompact', 'Compact', 'Subcompact', 'Mid-size', 'Full-size', 'SUV: Small', 'SUV: Standard',
-           'Minivan', 'Station wagon: Small', 'Station wagon: Mid-size', 'Pickup truck: Small',
-           'Special purpose vehicle', 'Pickup truck: Standard']
+    vcl = ['Two-seater', 'Minicompact', 'Compact', 'Subcompact', 'Mid-size', 'Full-size', 'SUV: Small', 'SUV: Standard', 'Minivan',
+           'Station wagon: Small', 'Station wagon: Mid-size', 'Pickup truck: Small', 'Special purpose vehicle', 'Pickup truck: Standard']
     trans = ['AV', 'AM', 'M', 'AS', 'A']
     fuel = ["D", "E", "X", "Z"]
     lst = []
-    for i in range(6):
-        if (type(inp[i]) == str):
-            if (inp[i] in vcl):
+    for i in range(9):
+        if type(inp[i]) == str:
+            if inp[i] in vcl:
                 lst.append(vcl.index(inp[i]))
-            elif (inp[i] in trans):
+            elif inp[i] in trans:
                 lst.append(trans.index(inp[i]))
-            elif (inp[i] in fuel):
-                if (fuel.index(inp[i]) == 0):
+            elif inp[i] in fuel:
+                if fuel.index(inp[i]) == 0:
                     lst.extend([1, 0, 0, 0])
                     break
-                elif (fuel.index(inp[i]) == 1):
+                elif fuel.index(inp[i]) == 1:
                     lst.extend([0, 1, 0, 0])
                     break
-                elif (fuel.index(inp[i]) == 2):
+                elif fuel.index(inp[i]) == 2:
                     lst.extend([0, 0, 1, 0])
                     break
-                elif (fuel.index(inp[i]) == 3):
+                elif fuel.index(inp[i]) == 3:
                     lst.extend([0, 0, 0, 1])
         else:
             lst.append(inp[i])
 
     arr = np.asarray(lst)
     arr = arr.reshape(1, -1)
-    arr = scaled_data.transform(arr)
+    arr = loaded_scaler.transform(arr)
     prediction = loaded_model.predict(arr)
 
-    return (f"The Fuel Consumption L/100km is {round(prediction[0][0])}")
+    return f"The Fuel Consumption L/100km is {round(prediction[0][0], 2)}"
+
 
 
 
