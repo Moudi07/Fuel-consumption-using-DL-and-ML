@@ -71,7 +71,7 @@ def input_converter(inp):
     arr = scaled_data.transform(arr)
     prediction = loaded_model.predict(arr)
 
-    return (f"The Fuel Consumption L/100km is {round(prediction[0], 2)}")
+    return (f"The Fuel Consumption L/100km is {round(prediction[0][0], 2)}")
 
 
 
