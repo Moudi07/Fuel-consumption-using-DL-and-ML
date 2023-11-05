@@ -71,7 +71,6 @@ def input_converter(inp):
     prediction = loaded_model.predict(arr)
 
     return f"lst is {lst}"
-    # return f"The Fuel Consumption L/100km is {round(prediction[0][0], 2)}"
 
 
 
