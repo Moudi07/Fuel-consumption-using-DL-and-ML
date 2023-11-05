@@ -5,8 +5,8 @@ import streamlit as st
 import base64
 from streamlit.components.v1 import html
 
-loaded_model = pk.load(open("svm_model.pkl","rb"))
-scaled_data = pk.load(open("scaled_data.pkl","rb"))
+loaded_model = pk.load(open("svm_model.sav","rb"))
+scaled_data = pk.load(open("scaled_data.sav","rb"))
 
 
 
