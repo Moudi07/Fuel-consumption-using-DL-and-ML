@@ -5,7 +5,7 @@ import streamlit as st
 import base64
 from streamlit.components.v1 import html
 
-loaded_model = pk.load(open("trained_model_rf.sav","rb"))
+loaded_model = pk.load(open("trained_model.sav","rb"))
 scaled_data = pk.load(open("scaled_data.sav","rb"))
 
 
