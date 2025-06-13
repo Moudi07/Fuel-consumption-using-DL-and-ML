@@ -44,7 +44,7 @@ def input_converter(inp):
     trans = ['AV', 'AM', 'M', 'AS', 'A']
     fuel = ["D", "E", "X", "Z"]
     lst = []
-    for i in range(9):
+    for i in range(len(inp)):
         if type(inp[i]) == str:
             if inp[i] in vcl:
                 lst.append(vcl.index(inp[i]))
@@ -67,7 +67,7 @@ def input_converter(inp):
 
     arr = np.asarray(lst)
     arr = arr.reshape(1, -1)
-    arr = loaded_scaler.transform(arr)
+    arr = scaled_data.transform(arr)
     prediction = loaded_model.predict(arr)
 
     return f"lst is {lst}"
